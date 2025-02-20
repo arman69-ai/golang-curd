@@ -15,6 +15,6 @@ func UserRoutes(router *gin.Engine) {
 		protected.GET("", controllers.GetUsers)
 		protected.GET("/:id", controllers.GetUser)
 		protected.PUT("/:id", controllers.UpdateUser)
-		protected.DELETE("/:id", controllers.DeleteUser)
+		protected.DELETE("/:id", middlewares.AuthMiddleware(), controllers.DeleteUser)
 	}
 }
